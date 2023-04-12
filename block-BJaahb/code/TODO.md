@@ -12,7 +12,7 @@ function outer() {
 let getSum = outer();
 let num = getSum();
 ```
-
+![img](./img/let-const-1.png)
 2.
 
 Create the execution context diagram for following code. Also write the output of the code below.
@@ -33,6 +33,7 @@ counter(); // output
 counter(); // output
 counter(); // output
 ```
+![img](./img/let-const-2.png)
 
 3. Create the execution context diagram
 
@@ -49,5 +50,7 @@ let tomato = makeColorChanger('tomato');
 blue();
 tomato();
 
-// What will be the background color after the execution of last line
+![img](./img/let-const-3.png)
+
+//Background color will be tomato as JS does line by line execution.
 ```
