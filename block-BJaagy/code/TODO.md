@@ -32,7 +32,11 @@ Have `map` return a new array filled with values that are the result of the 'cal
 // Your code goes here
 
 function map(arr,cb){
-  return arr.map(cb(elm)=>elm * 2);
+  let finalArr=[];
+  for(let elm of arr){
+    finalArr.push(cb(elm));
+  }
+  returb finalArr;
 }
 // Test Your Code
 function multiplyByTwo(n) {
@@ -48,9 +52,11 @@ multiplyByTwo(2); //-> 4
 ```js
 // Your code goes here
 function forEach(arr,cb){
-  arr.forEach(cb(elm)=>{
-    elm
-});
+  let finalArr=[];
+  for(let elm of arr){
+    cb(elm);
+  }
+  returb finalArr;
 }
 // Test Your Code
 let alphabet = '';
