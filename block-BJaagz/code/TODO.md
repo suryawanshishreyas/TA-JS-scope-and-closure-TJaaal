@@ -5,11 +5,10 @@
 - It should work exactly like array `forEach` method
 
 ```js
-function forEach(arr1,arr2,cb) {
-  arr2=[];
-  arr1.forEach(cb(item){
-    arr2.push(item + item);
-  });
+function forEach(arr,cb) {
+ arr.reduce((acc,cv,index,arr)=> {
+  cb(cv,index,arr);
+ })
 
 };
 forEach(['Sam', 'Jon', 'Arya'], (name, i, arr) =>
@@ -24,11 +23,12 @@ forEach(['Sam', 'Jon', 'Arya'], (name, i, arr) =>
 - It should work exactly like array `map` method
 
 ```js
-function map(arr1,arr2,cb) {
-  arr1.map(cb(item)=>{
-    arr2.push(item + item);
-  });
-};
+function map(arr,cb) {
+ return arr.reduce((acc,cv,i,arr)=>{
+  acc.push(cb(cv,i,arr)); 
+  retun acc;
+ },[])
+}
 
 map(['Sam', 'Jon', 'Arya'], (name) => name + name); // ['SamSam', 'JonJon', 'AryaArya']
 ```
@@ -40,10 +40,13 @@ map(['Sam', 'Jon', 'Arya'], (name) => name + name); // ['SamSam', 'JonJon', 'Ary
 - It should work exactly like array `filter` method
 
 ```js
-function filter(arr1,arr2,cb) {
-  arr1.filter(cb(elm)=>{
-    arr2.push(elm);
-  })
+function filter(arr,cb) {
+   return arr.reduce((acc,cv,i,arr)=>{
+    if(cb(cv,i,arr)){
+      acc.push(cv); 
+    }
+  retun acc;
+ },[])
 }
 filter(['Sam', 'Jon', 'Arya'], (name) =>
   name.startsWith('S')
