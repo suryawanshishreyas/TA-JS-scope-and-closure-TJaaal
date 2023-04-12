@@ -62,19 +62,17 @@ The returned function accepts one parameter.
 - If the parameter is the same as the password it will return the object in which we stored the values.
 
 ```js
-function createCache(callback,string) {
-  return function(n){
-    if(typeof (n) == 'number'){
-      var arr=[];
-      return n;
-    }
-    else{
-      arr.push()
-
+function createCache(cb,pwd) {
+  let obj={};
+  return function(param){
+    if(param !== pwd){
+    obj[param] = cb(param);
+    return cb(param);
+    }else{
+      return obj;
     }
   }
 }
-
 function add10(num) {
   return num + 10;
 }
@@ -92,7 +90,18 @@ addCache('foo'); // {12: 22, 100: 110, 1: 11}
 
 ```js
 function createCache() {
-  // Your code goes here
+   let obj={};
+  return function(param){
+    if(obj[param]){
+    return obj[param];
+    }else{
+      obj[param] = cb(param);
+      return cb(param);
+    }
+    else{
+      return obj;
+    }
+  }
 }
 
 function add10(num) {
