@@ -1,8 +1,15 @@
 1. Write a function that accepts a callback function and return another function. But the function should only be called once.
 
 ```js
-function once(cb) {
-  // your code goes here
+function once(func) {
+  let result;
+    return () => {
+        if (func) {
+            result = func();
+            func = null;
+        }
+        return result;
+    };
 }
 
 // TEST
@@ -17,8 +24,18 @@ log(); // return undefinde (can't be called twice)
 2. Change the above function in such a way that the function accepts two parameter a callback function and parameter for the callback function. When calling the function pass the parameters.
 
 ```js
-function once(cb) {
-  // your code goes here
+function once(cb,param) {
+  let result;
+    return () => {
+        if (func) {
+            result = func();
+            func = null;
+        }
+        else(param){
+          func=null;
+        }
+        return result;
+    };
 }
 
 // TEST
