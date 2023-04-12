@@ -67,9 +67,7 @@ callWithHello('How Are You?'); // Hello How Are You?
 ```js
 function addGame(gameName,currentScore) {
   return function(){
-    var currentScore=0;
-    let increment=1;
-    return `Score of ${gameName} is ${currentScore + increment}`;
+    return `Score of ${gameName} is ${++currentScore}`;
   }
 }
 
@@ -86,7 +84,11 @@ cricket(); // Your score of Cricket is 2
 
 ```js
 function getCard(suit) {
-  // your code goes here
+  return function(){
+    var myArray=[2,3,4,5,6,7,8,9,10,'J','Q','K','A'];
+    var result=myArray[Math.floor(Math.random()*myArray.length)];
+    return `Card is ${result} ${suit}`;
+  }
 }
 
 // Output
